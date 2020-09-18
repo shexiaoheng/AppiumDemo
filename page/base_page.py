@@ -1,3 +1,5 @@
+import os
+
 import yaml
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.common.by import By
@@ -8,9 +10,11 @@ class BasePage:
     _error_count = 0
     _error_max = 5
     _params = {}
+    parent_path = ""
 
     def __init__(self, driver: WebDriver = None):
         self._driver = driver
+        self.parent_path = os.path.dirname(os.path.dirname(__file__))
 
     def find(self, by, locator=None):
         try:
@@ -44,7 +48,7 @@ class BasePage:
             raise e
 
     def steps(self, path):
-        with open(path, encoding="utf-8") as f:
+        with open(self.parent_path + path, encoding="utf-8") as f:
             steps = yaml.safe_load(f)
             for step in steps:
                 if "by" in step.keys():
