@@ -1,0 +1,23 @@
+- by: id
+  locator: code
+  action: click
+
+- by: id
+  locator: stock_layout
+  action: click
+
+- by: -android uiautomator
+  locator: new UiSelector().text("五日")
+  action: click
+
+- by: -android uiautomator
+  locator: new UiSelector().text("周K")
+  action: click
+
+- by: -android uiautomator
+  locator: new UiSelector().text("月K")
+  action: click
+
+- by: -android uiautomator
+  locator: new UiSelector().text("季K")
+  action: click
